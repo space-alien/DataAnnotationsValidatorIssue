@@ -1,9 +1,23 @@
 ﻿@page "/"
+@using System.ComponentModel.DataAnnotations
 
-<PageTitle>Index</PageTitle>
+<EditForm Model="model">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
-<h1>Hello, world!</h1>
+    <label>
+        Name:
+        <InputText @bind-Value="model.Name" />
+    </label>
+    <MyComponent />
+</EditForm>
 
-Welcome to your new app.
+@code {
+    MyModel model = new();
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    class MyModel
+    {
+        [Required]
+        public string? Name { get; set; }
+    }
+}

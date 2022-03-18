@@ -1,0 +1,15 @@
+﻿<p>
+    MyComponent: @(Switch ? "ON" : "OFF")
+
+    <button @onclick="() => Switch = !Switch">Toggle</button>
+</p>
+
+@code {
+    bool Switch = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await Task.Delay(1000);
+        Switch = true;
+    }
+}
